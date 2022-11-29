@@ -66,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -126,6 +128,16 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# configuração extra necessária
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    # apenas se quiser manter a autenticação padrão do Django (se quiser autenticar apenas pelo face, nao colocar)
+    'django.contrib.auth.backends.ModelBackend', 
+]
+# para adicionar outras autenticações como Instagram, Github
+# acessar a pagina https://python-social-auth.readthedocs.io/en/latest/backends/index.html
+# e escolher a rede social / empresa que quer se logar
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
