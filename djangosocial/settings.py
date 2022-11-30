@@ -135,6 +135,10 @@ AUTHENTICATION_BACKENDS = [
     # apenas se quiser manter a autenticação padrão do Django (se quiser autenticar apenas pelo face, nao colocar)
     'django.contrib.auth.backends.ModelBackend', 
 ]
+
+# não gerar exeção ao fazer login
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
 # para adicionar outras autenticações como Instagram, Github
 # acessar a pagina https://python-social-auth.readthedocs.io/en/latest/backends/index.html
 # e escolher a rede social / empresa que quer se logar
@@ -152,3 +156,27 @@ LOGOUT_REDIRECT_URL = 'index'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurações para Facebook (aqui vai variar de acordo com a rede social)
+SOCIAL_AUTH_FACEBOOK_KEY = '898792827960607'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd253fc5cccd7ff3cb2df97e276f26dca'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+
+SECURE_HSTS_SECONDS = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
