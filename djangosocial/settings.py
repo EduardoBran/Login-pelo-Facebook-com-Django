@@ -139,6 +139,15 @@ AUTHENTICATION_BACKENDS = [
 # acessar a pagina https://python-social-auth.readthedocs.io/en/latest/backends/index.html
 # e escolher a rede social / empresa que quer se logar
 
+# rota de login
+LOGIN_URL = 'login'
+# rota após fazer o login
+LOGIN_REDIRECT_URL = 'index'
+# rota para logout
+LOGOUT_URL = 'logout'
+# rota após fazer logout
+LOGOUT_REDIRECT_URL = 'index'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
